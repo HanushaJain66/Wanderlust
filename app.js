@@ -20,9 +20,9 @@ const User = require("./models/user.js");
 
 
 const MONGO_URL=process.env.MONGO_DB_CONNECTION;
-// console.log(MONGO_URL);
 const passport = require("passport");
 const LocalStratergy = require("passport-local");
+const { error } = require('console');
 
 
 async function main()
@@ -30,10 +30,12 @@ async function main()
     await mongoose.connect(MONGO_URL);
 }
 
+// console.log(MONGO_URL)
+
 main().then(()=>{
     console.log("Connection successfull")
-}).catch(()=>{
-    console.log("Error in making connection")
+}).catch((error)=>{
+    console.log("Error in making connection",error)
 })
 
 app.set("view engine", "ejs");
